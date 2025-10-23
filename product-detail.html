@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Fashionista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <span>DOWNLOAD NOW</span>
+            <span>FREE shipping on all prepaid orders above Rs. 800 for topwear</span>
+            <span>Express shipping on all Orders</span>
+            <span>Your First fit, but make it discounted!</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><h1>FASHIONISTA</h1></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="#new" class="nav-link">NEW</a></li>
+                <li><a href="#shop" class="nav-link">SHOP</a></li>
+                <li><a href="#track" class="nav-link">TRACK ORDER</a></li>
+                <li><a href="#store" class="nav-link">STORE LOCATOR</a></li>
+                <li><a href="#franchise" class="nav-link">FRANCHISE ENQUIRY</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#search"><i class="fas fa-search"></i></a>
+                <a href="#account"><i class="fas fa-user"></i></a>
+                <a href="#cart"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> / <a href="index.html#new">New Arrivals</a> / <span id="breadcrumb-product">Product</span>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="product-detail-wrapper">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <img id="main-product-image" src="" alt="Product">
+                        <div class="image-badge" id="product-badge"></div>
+                    </div>
+                    <div class="thumbnail-images">
+                        <img class="thumbnail active" src="" alt="Thumbnail 1">
+                        <img class="thumbnail" src="" alt="Thumbnail 2">
+                        <img class="thumbnail" src="" alt="Thumbnail 3">
+                        <img class="thumbnail" src="" alt="Thumbnail 4">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info-detail">
+                    <h1 id="product-title">Product Name</h1>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(128 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price" id="product-price">Rs. 0</span>
+                        <span class="original-price">Rs. 3,999</span>
+                        <span class="discount">25% OFF</span>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>Product Details</h3>
+                        <p id="product-description">
+                            Experience elegance with this beautifully crafted piece. Made from premium quality fabric with intricate detailing, this outfit is perfect for any occasion. The comfortable fit and exquisite design make it a must-have addition to your wardrobe.
+                        </p>
+                    </div>
+
+                    <div class="product-features">
+                        <h3>Features</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Premium Quality Fabric</li>
+                            <li><i class="fas fa-check"></i> Comfortable Fit</li>
+                            <li><i class="fas fa-check"></i> Easy to Maintain</li>
+                            <li><i class="fas fa-check"></i> Perfect for All Occasions</li>
+                        </ul>
+                    </div>
+
+                    <div class="size-selector">
+                        <h3>Select Size</h3>
+                        <div class="size-options">
+                            <button class="size-btn">XS</button>
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                            <button class="size-btn">XXL</button>
+                        </div>
+                        <a href="#" class="size-guide">Size Guide</a>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="btn-buy-now">
+                            <i class="fas fa-bolt"></i> Buy Now
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="delivery-info">
+                        <div class="delivery-item">
+                            <i class="fas fa-truck"></i>
+                            <div>
+                                <strong>Free Delivery</strong>
+                                <p>On orders above Rs. 800</p>
+                            </div>
+                        </div>
+                        <div class="delivery-item">
+                            <i class="fas fa-undo"></i>
+                            <div>
+                                <strong>Easy Returns</strong>
+                                <p>7 days return policy</p>
+                            </div>
+                        </div>
+                        <div class="delivery-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Secure Payment</strong>
+                                <p>100% secure transactions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2>You May Also Like</h2>
+            <div class="product-grid">
+                <div class="product-card" data-product-id="1">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=400&h=500&fit=crop" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h4>Lavender Linen Kurta Set</h4>
+                        <p class="price">Rs. 1,999</p>
+                    </div>
+                </div>
+                <div class="product-card" data-product-id="2">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=400&h=500&fit=crop" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h4>White Printed Kurta</h4>
+                        <p class="price">Rs. 2,299</p>
+                    </div>
+                </div>
+                <div class="product-card" data-product-id="3">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?w=400&h=500&fit=crop" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h4>Brown Silk Kurta Set</h4>
+                        <p class="price">Rs. 2,499</p>
+                    </div>
+                </div>
+                <div class="product-card" data-product-id="4">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h4>Pink Muslin Kurta</h4>
+                        <p class="price">Rs. 2,199</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="#" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FASHIONISTA</h3>
+                    <p>Your destination for premium ethnic wear and contemporary fashion.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#shipping">Shipping Policy</a></li>
+                        <li><a href="#returns">Returns & Exchange</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#track">Track Order</a></li>
+                        <li><a href="#size">Size Guide</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="product-detail.js"></script>
+</body>
+</html>

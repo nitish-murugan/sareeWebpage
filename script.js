@@ -95,24 +95,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Product Cards Hover Effect
+    // Product Cards Click Handler
     const productCards = document.querySelectorAll('.product-card');
     
-    productCards.forEach(card => {
+    productCards.forEach((card, index) => {
         card.addEventListener('click', () => {
-            console.log('Product clicked');
-            // Add your product detail page logic here
+            // Get product ID from data attribute or use index + 1
+            const productId = card.getAttribute('data-product-id') || (index + 1);
+            // Navigate to product detail page
+            window.location.href = `product-detail.html?id=${productId}`;
         });
     });
 
-    // Category Cards Click
+    // Category Cards Click Handler
     const categoryCards = document.querySelectorAll('.category-card');
     
     categoryCards.forEach(card => {
         card.addEventListener('click', () => {
             const category = card.querySelector('h3').textContent;
             console.log('Category clicked:', category);
-            // Add your category navigation logic here
+            // Scroll to products section with filter
+            const productsSection = document.querySelector('.products-section');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            // You can add category filtering logic here
         });
     });
 
