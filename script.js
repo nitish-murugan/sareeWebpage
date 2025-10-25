@@ -1,5 +1,8 @@
 // Hero Carousel Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Update cart count on page load
+    updateCartCount();
+    
     // Carousel
     const slides = document.querySelectorAll('.carousel-slide');
     const dotsContainer = document.querySelector('.carousel-dots');
@@ -99,9 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const productCards = document.querySelectorAll('.product-card');
     
     productCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
             // Get product ID from data attribute or use index + 1
-            const productId = card.getAttribute('data-product-id') || (index + 1);
+            const productId = this.getAttribute('data-product-id') || (index + 1);
+            console.log('Product card clicked, ID:', productId);
             // Navigate to product detail page
             window.location.href = `product-detail.html?id=${productId}`;
         });
@@ -123,35 +128,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Search Icon Click
-    const searchIcon = document.querySelector('.nav-icons a[href="#search"]');
-    if (searchIcon) {
-        searchIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Add search functionality here
-            alert('Search functionality would open here');
-        });
-    }
+    // Search and Account icons now link directly to pages - no handlers needed
 
-    // Cart Icon Click
-    const cartIcon = document.querySelector('.nav-icons a[href="#cart"]');
-    if (cartIcon) {
-        cartIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Add cart functionality here
-            alert('Shopping cart would open here');
-        });
-    }
-
-    // Account Icon Click
-    const accountIcon = document.querySelector('.nav-icons a[href="#account"]');
-    if (accountIcon) {
-        accountIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Add account functionality here
-            alert('Account page would open here');
-        });
-    }
+    // Cart Icon Click - already links to cart.html via href
 
     // WhatsApp Float Button
     const whatsappBtn = document.querySelector('.whatsapp-float');
@@ -183,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.5s, transform 0.5s';
+        card.style.pointerEvents = 'auto';
         observer.observe(card);
     });
 
@@ -268,3 +248,14 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Cart helper function for homepage
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('fashionista_cart') || '[]');
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    const countElements = document.querySelectorAll('#nav-cart-count, .cart-count');
+    countElements.forEach(el => {
+        el.textContent = count;
+        el.style.display = count > 0 ? 'block' : 'none';
+    });
+}

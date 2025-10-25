@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - Fashionista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="track-order.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><h1>FASHIONISTA</h1></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="index.html#new-arrivals" class="nav-link">NEW</a></li>
+                <li><a href="index.html#new-arrivals" class="nav-link">SHOP</a></li>
+                <li><a href="track-order.html" class="nav-link active">TRACK ORDER</a></li>
+                <li><a href="#store" class="nav-link">STORE LOCATOR</a></li>
+                <li><a href="#franchise" class="nav-link">FRANCHISE ENQUIRY</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="search.html"><i class="fas fa-search"></i></a>
+                <a href="login.html"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="nav-cart-count">0</span>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Track Order Section -->
+    <section class="track-order-section">
+        <div class="container">
+            <h1 class="page-title">Track Your Order</h1>
+            <p class="page-subtitle">Enter your order details to track your shipment</p>
+
+            <!-- Track Order Form -->
+            <div class="track-form-container">
+                <form id="track-form">
+                    <div class="form-group">
+                        <label for="order-id">Order ID</label>
+                        <input 
+                            type="text" 
+                            id="order-id" 
+                            placeholder="e.g., FS1234567890123"
+                            required
+                        >
+                        <small>You can find your order ID in your confirmation email</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="track-btn">
+                        <i class="fas fa-search"></i> Track Order
+                    </button>
+                </form>
+
+                <div class="quick-access">
+                    <h3>Your Recent Orders</h3>
+                    <div id="recent-orders" class="recent-orders-list">
+                        <!-- Recent orders will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Tracking Result -->
+            <div id="tracking-result" class="tracking-result" style="display: none;">
+                <div class="order-header">
+                    <div class="order-info">
+                        <h2>Order <span id="result-order-id"></span></h2>
+                        <p class="order-date">Placed on <span id="result-order-date"></span></p>
+                    </div>
+                    <div class="order-status-badge">
+                        <span id="result-status-badge"></span>
+                    </div>
+                </div>
+
+                <!-- Tracking Timeline -->
+                <div class="tracking-timeline">
+                    <div class="timeline-item active" data-status="placed">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Placed</h4>
+                            <p class="timeline-date" id="placed-date"></p>
+                            <p class="timeline-desc">Your order has been received</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-status="confirmed">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Confirmed</h4>
+                            <p class="timeline-date" id="confirmed-date"></p>
+                            <p class="timeline-desc">Your order has been confirmed</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-status="processing">
+                        <div class="timeline-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Processing</h4>
+                            <p class="timeline-date" id="processing-date"></p>
+                            <p class="timeline-desc">Your order is being prepared</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-status="shipped">
+                        <div class="timeline-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Shipped</h4>
+                            <p class="timeline-date" id="shipped-date"></p>
+                            <p class="timeline-desc">Your order is on the way</p>
+                            <p class="tracking-number" id="tracking-number"></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-status="delivered">
+                        <div class="timeline-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Delivered</h4>
+                            <p class="timeline-date" id="delivered-date"></p>
+                            <p class="timeline-desc">Your order has been delivered</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="order-items">
+                    <h3>Order Items</h3>
+                    <div id="result-items" class="items-list">
+                        <!-- Items will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="shipping-details">
+                    <h3>Shipping Details</h3>
+                    <div class="address-box">
+                        <div id="result-address"></div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary-box">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="result-subtotal"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span id="result-shipping"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Discount:</span>
+                        <span id="result-discount" class="discount-amount"></span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="result-total"></span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button onclick="window.print()" class="btn-outline">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button onclick="trackAnother()" class="btn-outline">
+                        <i class="fas fa-search"></i> Track Another Order
+                    </button>
+                    <a href="index.html" class="btn-primary">
+                        <i class="fas fa-shopping-bag"></i> Continue Shopping
+                    </a>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-box" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Order Not Found</h3>
+                <p>We couldn't find an order with the provided details. Please check your order ID and email address and try again.</p>
+                <button onclick="trackAnother()" class="btn-primary">Try Again</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Fashionista</h4>
+                    <p>Your one-stop destination for trendy and elegant ethnic wear.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#new-arrivals">Shop</a></li>
+                        <li><a href="track-order.html">Track Order</a></li>
+                        <li><a href="#store">Store Locator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#returns">Returns & Exchange</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                        <li><i class="fas fa-envelope"></i> info@fashionista.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Mumbai, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="auth.js"></script>
+    <script src="track-order.js"></script>
+</body>
+</html>

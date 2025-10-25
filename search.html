@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Fashionista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-section {
+            min-height: 70vh;
+            padding: 40px 0 60px;
+        }
+
+        .search-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px;
+            margin-bottom: 40px;
+        }
+
+        .search-box-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            background-color: var(--white);
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 20px 30px;
+            border: none;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 20px 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: #1a252f;
+        }
+
+        .search-suggestions {
+            max-width: 800px;
+            margin: 20px auto 0;
+            text-align: center;
+        }
+
+        .search-suggestions p {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .suggestion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .suggestion-tag {
+            padding: 8px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .suggestion-tag:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-results {
+            padding: 0 20px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .results-count {
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        .results-count strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .sort-dropdown {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .no-results i {
+            font-size: 80px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .no-results h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 1px solid var(--border-color);
+            background-color: var(--white);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .search-loading {
+            text-align: center;
+            padding: 60px 20px;
+            display: none;
+        }
+
+        .search-loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid var(--light-bg);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .search-header {
+                padding: 40px 20px;
+            }
+
+            .search-box input {
+                padding: 15px 20px;
+                font-size: 16px;
+            }
+
+            .search-box button {
+                padding: 15px 25px;
+                font-size: 16px;
+            }
+
+            .results-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <span>DOWNLOAD NOW</span>
+            <span>FREE shipping on all prepaid orders above Rs. 800 for topwear</span>
+            <span>Express shipping on all Orders</span>
+            <span>Your First fit, but make it discounted!</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><h1>FASHIONISTA</h1></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="index.html#new-arrivals" class="nav-link">NEW</a></li>
+                <li><a href="index.html#new-arrivals" class="nav-link">SHOP</a></li>
+                <li><a href="track-order.html" class="nav-link">TRACK ORDER</a></li>
+                <li><a href="#store" class="nav-link">STORE LOCATOR</a></li>
+                <li><a href="#franchise" class="nav-link">FRANCHISE ENQUIRY</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="search.html"><i class="fas fa-search"></i></a>
+                <a href="login.html"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="nav-cart-count">0</span>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Header -->
+    <div class="search-header">
+        <div class="search-box-container">
+            <form class="search-box" id="search-form">
+                <input type="text" id="search-input" placeholder="Search for products, categories..." autofocus>
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div class="search-suggestions">
+                <p>Popular Searches:</p>
+                <div class="suggestion-tags">
+                    <span class="suggestion-tag" data-search="kurta">Kurta</span>
+                    <span class="suggestion-tag" data-search="dress">Dress</span>
+                    <span class="suggestion-tag" data-search="suit">Suit Set</span>
+                    <span class="suggestion-tag" data-search="palazzo">Palazzo</span>
+                    <span class="suggestion-tag" data-search="printed">Printed</span>
+                    <span class="suggestion-tag" data-search="silk">Silk</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <!-- Loading -->
+            <div class="search-loading" id="search-loading">
+                <div class="spinner"></div>
+                <p>Searching...</p>
+            </div>
+
+            <!-- Results -->
+            <div id="search-results-container" style="display: none;">
+                <div class="results-header">
+                    <div class="results-count">
+                        Found <strong id="results-count">0</strong> results for "<span id="search-query"></span>"
+                    </div>
+                    <select class="sort-dropdown" id="sort-dropdown">
+                        <option value="relevance">Sort by: Relevance</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="kurta">Kurta</button>
+                    <button class="filter-btn" data-filter="dress">Dresses</button>
+                    <button class="filter-btn" data-filter="suit">Suits</button>
+                    <button class="filter-btn" data-filter="co-ord">Co-ords</button>
+                </div>
+
+                <div class="product-grid" id="search-results">
+                    <!-- Results will be inserted here -->
+                </div>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h2>No results found</h2>
+                <p>Try searching with different keywords or browse our collections</p>
+                <a href="index.html#new-arrivals" class="btn-continue-shopping">Browse Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="#" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FASHIONISTA</h3>
+                    <p>Your destination for premium ethnic wear and contemporary fashion.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#shipping">Shipping Policy</a></li>
+                        <li><a href="#returns">Returns & Exchange</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="track-order.html">Track Order</a></li>
+                        <li><a href="#size">Size Guide</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+</body>
+</html>

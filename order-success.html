@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success - Fashionista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .success-section {
+            padding: 80px 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-bg);
+        }
+
+        .success-container {
+            max-width: 600px;
+            text-align: center;
+            background-color: var(--white);
+            padding: 60px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .success-icon i {
+            font-size: 50px;
+            color: var(--white);
+        }
+
+        .success-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .order-id {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+            padding: 15px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .order-details {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+        }
+
+        .order-details h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .order-details p {
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 15px;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .success-container {
+                padding: 40px 30px;
+            }
+
+            .success-title {
+                font-size: 26px;
+            }
+
+            .success-actions {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <span>DOWNLOAD NOW</span>
+            <span>FREE shipping on all prepaid orders above Rs. 800 for topwear</span>
+            <span>Express shipping on all Orders</span>
+            <span>Your First fit, but make it discounted!</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><h1>FASHIONISTA</h1></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="index.html#new-arrivals" class="nav-link">NEW</a></li>
+                <li><a href="index.html#new-arrivals" class="nav-link">SHOP</a></li>
+                <li><a href="track-order.html" class="nav-link">TRACK ORDER</a></li>
+                <li><a href="#store" class="nav-link">STORE LOCATOR</a></li>
+                <li><a href="#franchise" class="nav-link">FRANCHISE ENQUIRY</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="search.html"><i class="fas fa-search"></i></a>
+                <a href="login.html"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="nav-cart-count">0</span>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Section -->
+    <section class="success-section">
+        <div class="success-container">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1 class="success-title">Order Placed Successfully!</h1>
+            <p class="success-message">
+                Thank you for your purchase. Your order has been received and is being processed.
+            </p>
+            <div class="order-id">
+                Order ID: <span id="order-id">Loading...</span>
+            </div>
+            
+            <div class="order-details" id="order-details">
+                <h3>What's Next?</h3>
+                <p><i class="fas fa-envelope"></i> You will receive an email confirmation shortly</p>
+                <p><i class="fas fa-box"></i> Your order will be packed and shipped within 2-3 business days</p>
+                <p><i class="fas fa-truck"></i> Track your order status in your account</p>
+            </div>
+
+            <div class="success-actions">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="index.html#new-arrivals" class="btn-secondary">
+                    <i class="fas fa-shopping-bag"></i> Continue Shopping
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FASHIONISTA</h3>
+                    <p>Your destination for premium ethnic wear and contemporary fashion.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#shipping">Shipping Policy</a></li>
+                        <li><a href="#returns">Returns & Exchange</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="track-order.html">Track Order</a></li>
+                        <li><a href="#size">Size Guide</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get order ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            
+            if (orderId) {
+                document.getElementById('order-id').textContent = orderId;
+            } else {
+                document.getElementById('order-id').textContent = 'N/A';
+            }
+
+            // Update cart count
+            const cart = JSON.parse(localStorage.getItem('fashionista_cart') || '[]');
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            const countElements = document.querySelectorAll('#nav-cart-count, .cart-count');
+            countElements.forEach(el => {
+                el.textContent = count;
+                el.style.display = count > 0 ? 'block' : 'none';
+            });
+
+            // Hamburger menu
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+    <script src="auth.js"></script>
+</body>
+</html>

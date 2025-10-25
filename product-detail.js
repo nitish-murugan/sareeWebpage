@@ -5,7 +5,7 @@ const productData = {
         name: "Nritya Lavender printed 2 Piece Linen Shimmer Kurta with Dupatta",
         price: 1999,
         originalPrice: 2999,
-        image: "https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=800&h=1000&fit=crop",
+        image: "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?w=800&h=1000&fit=crop",
         badge: "New",
         description: "Experience elegance with this beautifully crafted Lavender printed Linen Shimmer Kurta set. Made from premium quality linen fabric with subtle shimmer, this 2-piece set includes a kurta and dupatta. The intricate print work and comfortable fit make it perfect for festive occasions and celebrations.",
         category: "Kurta Set"
@@ -98,9 +98,40 @@ function loadProductDetails() {
     }
 }
 
+// Cart helper functions
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('fashionista_cart') || '[]');
+    
+    const existingItem = cart.find(item => 
+        item.id === product.id && item.size === product.size
+    );
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem('fashionista_cart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('fashionista_cart') || '[]');
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    const countElements = document.querySelectorAll('#nav-cart-count, .cart-count');
+    countElements.forEach(el => {
+        el.textContent = count;
+        el.style.display = count > 0 ? 'block' : 'none';
+    });
+}
+
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
     loadProductDetails();
+    updateCartCount();
 
     // Thumbnail click handler
     const thumbnails = document.querySelectorAll('.thumbnail');
@@ -143,15 +174,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const addToCartBtn = document.querySelector('.btn-add-to-cart');
     addToCartBtn.addEventListener('click', function() {
         const selectedSize = document.querySelector('.size-btn.active').textContent;
-        showNotification(`Added to cart! Size: ${selectedSize}`);
+        const productId = getProductIdFromURL();
+        const product = productData[productId];
+        
+        if (product) {
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                size: selectedSize
+            });
+            showNotification(`Added to cart! Size: ${selectedSize}`);
+            updateCartCount();
+        }
     });
 
     // Buy now button
     const buyNowBtn = document.querySelector('.btn-buy-now');
     buyNowBtn.addEventListener('click', function() {
         const selectedSize = document.querySelector('.size-btn.active').textContent;
-        showNotification(`Proceeding to checkout! Size: ${selectedSize}`);
-        // Here you would redirect to checkout page
+        const productId = getProductIdFromURL();
+        const product = productData[productId];
+        
+        if (product) {
+            // Clear cart and add only this item
+            localStorage.removeItem('fashionista_cart');
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                size: selectedSize
+            });
+            // Redirect to checkout
+            window.location.href = 'checkout.html';
+        }
     });
 
     // Related products click handler
