@@ -61,13 +61,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startAutoPlay();
 
-    // Hamburger Menu
+    // Hamburger Menu with Mobile Overlay
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const body = document.body;
+    
+    // Create mobile overlay
+    const mobileOverlay = document.createElement('div');
+    mobileOverlay.classList.add('mobile-overlay');
+    document.body.appendChild(mobileOverlay);
 
-    hamburger.addEventListener('click', () => {
+    function toggleMobileMenu() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMobileMenu);
+    
+    mobileOverlay.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu on nav link click (mobile)
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                toggleMobileMenu();
+            }
+        });
+    });
+    
+    // Close menu on window resize if open
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            body.style.overflow = '';
+        }
     });
 
     // Filter Buttons

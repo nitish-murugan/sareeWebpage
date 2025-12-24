@@ -344,12 +344,18 @@
 }
 
 @media (max-width: 768px) {
+    .checkout-section {
+        padding: 40px 0;
+    }
+
     .checkout-wrapper {
         grid-template-columns: 1fr;
     }
 
     .order-summary {
         position: static;
+        order: -1;
+        margin-bottom: 20px;
     }
 
     .checkout-form-container {
@@ -358,49 +364,147 @@
 
     .form-row {
         grid-template-columns: 1fr;
+        gap: 0;
     }
 
     .checkout-progress {
         margin-bottom: 30px;
+        padding: 0 10px;
     }
 
     .progress-line {
-        width: 60px;
+        width: 50px;
     }
 
     .step-number {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
     }
 
     .step-label {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .checkout-form-container {
-        padding: 20px;
+        font-size: 11px;
+        text-align: center;
     }
 
-    .order-summary {
-        padding: 20px;
-    }
-
-    .page-title {
-        font-size: 28px;
+    .form-section {
+        margin-bottom: 30px;
     }
 
     .form-section h2 {
         font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .form-group input {
+        padding: 14px 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .order-items {
+        max-height: 200px;
+    }
+
+    .order-item-image {
+        width: 60px;
+        height: 75px;
+    }
+
+    .order-item-title {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-section {
+        padding: 30px 0;
+    }
+
+    .checkout-form-container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .order-summary {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .order-summary h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .form-section h2 {
+        font-size: 16px;
+        flex-wrap: wrap;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 13px;
     }
 
     .payment-card {
-        padding: 15px;
+        padding: 12px;
+        gap: 10px;
     }
 
     .payment-card i {
-        font-size: 24px;
+        font-size: 22px;
+    }
+
+    .payment-card strong {
+        font-size: 14px;
+    }
+
+    .payment-card p {
+        font-size: 12px;
+    }
+
+    .btn-place-order {
+        padding: 16px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .checkout-progress {
+        margin-bottom: 25px;
+    }
+
+    .progress-line {
+        width: 35px;
+        margin: 0 5px;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .step-label {
+        font-size: 10px;
+    }
+
+    .summary-row {
+        font-size: 14px;
+    }
+
+    .total-row {
+        font-size: 17px;
+    }
+
+    .secure-payment {
+        font-size: 13px;
+        padding-top: 15px;
+        margin-top: 15px;
     }
 }

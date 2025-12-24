@@ -495,22 +495,33 @@
 /* Responsive */
 @media (max-width: 768px) {
     .track-order-section {
-        padding: 80px 0 40px;
+        padding: 60px 0 40px;
     }
 
     .page-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
 
     .track-form-container,
     .tracking-result {
         padding: 25px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     .order-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+    }
+
+    .order-header h2 {
+        font-size: 1.2rem;
     }
 
     .timeline-item {
@@ -525,24 +536,191 @@
 
     .timeline-item:not(:last-child)::before {
         left: 27px;
+        top: 45px;
+    }
+
+    .timeline-content h4 {
+        font-size: 1rem;
+    }
+
+    .timeline-date,
+    .timeline-desc {
+        font-size: 0.85rem;
     }
 
     .order-item {
         flex-direction: column;
+        padding: 12px;
     }
 
     .item-image {
         width: 100%;
-        height: 200px;
+        height: 180px;
+    }
+
+    .item-details h4 {
+        font-size: 0.95rem;
     }
 
     .action-buttons {
         flex-direction: column;
+        gap: 10px;
     }
 
     .btn-outline,
     .btn-primary {
         width: 100%;
+        min-width: unset;
+    }
+
+    .form-group input {
+        padding: 14px 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .track-btn {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    .quick-access h3 {
+        font-size: 1rem;
+    }
+
+    .recent-order-item {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .track-order-section {
+        padding: 50px 0 30px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+        padding: 0 10px;
+    }
+
+    .track-form-container,
+    .tracking-result {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group small {
+        font-size: 0.8rem;
+    }
+
+    .track-btn {
+        padding: 13px;
+        font-size: 0.95rem;
+    }
+
+    .order-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .order-date {
+        font-size: 0.85rem;
+    }
+
+    .order-status-badge {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    .timeline-item {
+        gap: 12px;
+        padding-left: 5px;
+    }
+
+    .timeline-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .timeline-item:not(:last-child)::before {
+        left: 20px;
+        top: 42px;
+    }
+
+    .timeline-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .tracking-number {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .item-image {
+        height: 150px;
+    }
+
+    .item-details h4 {
+        font-size: 0.9rem;
+    }
+
+    .item-details p {
+        font-size: 0.85rem;
+    }
+
+    .shipping-details h3,
+    .order-summary-box h3,
+    .order-items h3 {
+        font-size: 1rem;
+    }
+
+    .address-box {
+        padding: 15px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .order-summary-box {
+        padding: 15px;
+    }
+
+    .summary-row {
+        font-size: 0.9rem;
+        padding: 8px 0;
+    }
+
+    .summary-row.total {
+        font-size: 1rem;
+    }
+
+    .btn-outline,
+    .btn-primary {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .error-box {
+        padding: 30px 20px;
+    }
+
+    .error-box i {
+        font-size: 3rem;
+    }
+
+    .error-box h3 {
+        font-size: 1.1rem;
+    }
+
+    .error-box p {
+        font-size: 0.9rem;
     }
 }
 

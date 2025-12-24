@@ -237,13 +237,80 @@
             display: flex;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .login-section {
+                padding: 40px 15px;
+            }
+
             .login-container {
-                padding: 40px 30px;
+                padding: 35px 25px;
             }
 
             .login-header h1 {
                 font-size: 26px;
+            }
+
+            .login-header p {
+                font-size: 14px;
+            }
+
+            .form-group input {
+                padding: 14px 15px 14px 42px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            .remember-forgot {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .social-login {
+                flex-direction: column;
+            }
+
+            .social-btn {
+                padding: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-section {
+                padding: 30px 15px;
+            }
+
+            .login-container {
+                padding: 30px 20px;
+                border-radius: 12px;
+            }
+
+            .login-header {
+                margin-bottom: 30px;
+            }
+
+            .login-header h1 {
+                font-size: 24px;
+            }
+
+            .login-form {
+                gap: 20px;
+            }
+
+            .form-group label {
+                font-size: 13px;
+            }
+
+            .btn-login {
+                padding: 14px;
+                font-size: 15px;
+            }
+
+            .divider {
+                margin: 20px 0;
+            }
+
+            .signup-link {
+                margin-top: 20px;
             }
         }
     </style>
